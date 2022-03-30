@@ -1,0 +1,11 @@
+///////////////////////////////////////////////////////////////////////////////
+///         University of Hawaii, College of Engineering
+/// @brief  ee205_lab11a_fatCat - EE 205 - Spr 2022
+///
+/// @file Weight.cpp
+/// @version 1.0
+///
+/// @author Mark Nelson <marknels@hawaii.edu>
+/// @date   30_Mar_2022
+///////////////////////////////////////////////////////////////////////////////
+#include "Weight.h"
