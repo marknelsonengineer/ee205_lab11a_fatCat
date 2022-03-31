@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 project(ee205_lab11a_fatCat
         VERSION 1.0
-        DESCRIPTION "Cats just don't care"
+        DESCRIPTION "They say Fat Cat like it's a bad thing."
         LANGUAGES CXX
         )
 
@@ -20,8 +20,8 @@ find_package(Doxygen
 if (DOXYGEN_FOUND)
    message(STATUS "Generating documentation using Doxygen")
 
-   set(DOXYGEN_PROJECT_NUMBER "1.0")
-   set(DOXYGEN_PROJECT_BRIEF "Cats just don't care")
+   set(DOXYGEN_PROJECT_NUMBER ${CMAKE_PROJECT_VERSION})
+   set(DOXYGEN_PROJECT_BRIEF ${PROJECT_DESCRIPTION})
    set(DOXYGEN_GENERATE_HTML YES)
    set(DOXYGEN_PROJECT_LOGO "images/catLogo.jpeg")
    set(DOXYGEN_GENERATE_TREEVIEW YES)
@@ -53,17 +53,20 @@ if (DOXYGEN_FOUND)
    set(DOXYGEN_TEMPLATE_RELATIONS YES)
    set(DOXYGEN_DOT_GRAPH_MAX_NODES 100)
    set(DOXYGEN_DOT_TRANSPARENT YES)
-   set(DOXYGEN_CALL_GRAPH YES)
-   set(DOXYGEN_CALLER_GRAPH YES)
+   set(DOXYGEN_CALL_GRAPH NO)
+   set(DOXYGEN_CALLER_GRAPH NO)
    set(DOXYGEN_DOT_IMAGE_FORMAT svg)
    set(DOXYGEN_INTERACTIVE_SVG YES)
    set(DOXYGEN_WARN_AS_ERROR FAIL_ON_WARNINGS)
+   set(DOXYGEN_STRIP_CODE_COMMENTS NO)
+   set(DOXYGEN_SOURCE_BROWSER NO)
+   set(DOXYGEN_VERBATIM_HEADERS NO)
    set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/generated_docs)
 
    message(STATUS "DOXYGEN_OUTPUT_DIRECTORY = [${DOXYGEN_OUTPUT_DIRECTORY}]")
 
    doxygen_add_docs(doc
-           ${CMAKE_SOURCE_DIR}
+           ${CMAKE_SOURCE_DIR}/src
    #       ${CMAKE_SOURCE_DIR}/README.md
    #       ${CMAKE_SOURCE_DIR}/CONTRIBUTE.md
            ALL
@@ -91,5 +94,6 @@ else (DOXYGEN_FOUND)
    message("Doxygen needs to be installed to generate the doxygen documentation")
 endif (DOXYGEN_FOUND)
 
+add_subdirectory(tests)
 
-add_executable(ee205_lab11a_fatCat main.cpp Weight.cpp Weight.h)
+add_executable(ee205_lab11a_fatCat main.cpp src/Weight.cpp src/Weight.h)
