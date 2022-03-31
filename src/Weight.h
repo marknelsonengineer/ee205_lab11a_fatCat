@@ -61,12 +61,12 @@ private:  ////////////////////// Member Variables //////////////////////////////
 
 public:   //////////////////////// Constructors ////////////////////////////////
    explicit Weight() noexcept;  ///< A default weight
-   explicit Weight( float newWeight ) noexcept;  ///< A weight with a value
+   explicit Weight( float newWeight );  ///< A weight with a value
    explicit Weight( UnitOfWeight newUnitOfWeight ) noexcept;  ///< A weight with a UnitOfWeight
-   explicit Weight( float newWeight, UnitOfWeight newUnitOfWeight ) noexcept;  ///< A weight with a value and UnitOfWeight
-   explicit Weight( float newWeight, float newMaxWeight ) noexcept;  ///< A weight with a value and a maximum weight
-   explicit Weight( UnitOfWeight newUnitOfWeight, float newMaxWeight ) noexcept;  ///< A weight with a UnitOfWeight and a maximum weight
-   explicit Weight( float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight ) noexcept;  ///< A weight with a value, UnitOfWeight and a maximum weight
+   explicit Weight( float newWeight, UnitOfWeight newUnitOfWeight );  ///< A weight with a value and UnitOfWeight
+   explicit Weight( float newWeight, float newMaxWeight );  ///< A weight with a value and a maximum weight
+   explicit Weight( UnitOfWeight newUnitOfWeight, float newMaxWeight );  ///< A weight with a UnitOfWeight and a maximum weight
+   explicit Weight( float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight );  ///< A weight with a value, UnitOfWeight and a maximum weight
 
 public:   /////////////////////////// Getters  /////////////////////////////////
    bool  isWeightKnown() const noexcept;  ///< `true` if the weight is known

@@ -34,7 +34,7 @@ Weight::Weight() noexcept {
 
 
 
-Weight::Weight( const float newWeight ) noexcept {
+Weight::Weight( const float newWeight ) {
    setWeight( newWeight );
    assert( validate() );
 }
@@ -48,14 +48,14 @@ Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight ) noexcept {
 
 
 /// Once UnitOfWeight is set, it can't be changed
-Weight::Weight( const float newWeight, const Weight::UnitOfWeight newUnitOfWeight ) noexcept : Weight( newUnitOfWeight ) {
+Weight::Weight( const float newWeight, const Weight::UnitOfWeight newUnitOfWeight ) : Weight( newUnitOfWeight ) {
    setWeight( newWeight, newUnitOfWeight );
    assert( validate() );
 }
 
 
 /// Once maxWeight is set, it can't be changed
-Weight::Weight( const float newWeight, const float newMaxWeight ) noexcept {
+Weight::Weight( const float newWeight, const float newMaxWeight ) {
    setMaxWeight( newMaxWeight );
    setWeight( newWeight );
    assert( validate() );
@@ -64,7 +64,7 @@ Weight::Weight( const float newWeight, const float newMaxWeight ) noexcept {
 
 /// Once UnitOfWeight is set, it can't be changed.
 /// Once maxWeight is set, it can't be changed.
-Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight, const float newMaxWeight ) noexcept : Weight( newUnitOfWeight ) {
+Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight, const float newMaxWeight ) : Weight( newUnitOfWeight ) {
    setMaxWeight( newMaxWeight );
    assert( validate() );
 }
@@ -74,7 +74,7 @@ Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight, const float newMaxWe
 /// Once maxWeight is set, it can't be changed.
 Weight::Weight( const float newWeight
                ,const Weight::UnitOfWeight newUnitOfWeight
-               ,const float newMaxWeight ) noexcept : Weight( newUnitOfWeight, newMaxWeight ) {
+               ,const float newMaxWeight ) : Weight( newUnitOfWeight, newMaxWeight ) {
    setWeight( newWeight );
    assert( validate() );
 }
