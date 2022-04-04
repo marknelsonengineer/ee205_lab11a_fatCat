@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(ee205_lab11a_fatCat
+project(ee205_lab12a_fatCat
         VERSION 1.0
         DESCRIPTION "They say Fat Cat like it's a bad thing."
         LANGUAGES CXX
@@ -96,4 +96,4 @@ endif (DOXYGEN_FOUND)
 
 add_subdirectory(tests)
 
-add_executable(ee205_lab11a_fatCat main.cpp src/Weight.cpp src/Weight.h)
+add_executable(ee205_lab12a_fatCat main.cpp src/Weight.cpp src/Weight.h)
