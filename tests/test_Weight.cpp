@@ -2,6 +2,8 @@
 ///         University of Hawaii, College of Engineering
 /// @brief  ee205_lab11a_fatCat - EE 205 - Spr 2022
 ///
+/// Comprehensive test of the Weight class
+///
 /// @file test_Weight.cpp
 /// @version 1.0
 ///
@@ -13,7 +15,6 @@
 #define BOOST_TEST_MAIN  // in only one cpp file
 #include <boost/test/unit_test.hpp>
 #include <stdexcept>
-#include <sstream>  // For stringstream
 
 #include "../src/Weight.h"
 
@@ -235,5 +236,47 @@ BOOST_AUTO_TEST_CASE( test_Stream_Output ) {
       ss << weight;
       BOOST_CHECK_EQUAL( ss.str(), "Unknown out of 1 Kilo" );
    }
+}
 
+
+BOOST_AUTO_TEST_CASE( test_Equality ) {
+   Weight w1( 1.0, Weight::KILO );
+   Weight w2( Weight::SLUGS_IN_A_POUND / Weight::KILOS_IN_A_POUND, Weight::SLUG );
+   Weight w3( Weight::SLUG );
+   BOOST_CHECK( w1 == w2 );
+   BOOST_CHECK( w1 == w1 );
+   BOOST_CHECK( w2 == w2 );
+
+   BOOST_CHECK_EQUAL( w1 == w3, false );
+   BOOST_CHECK_EQUAL( w3 == w2, false );
+   BOOST_CHECK( w3 == w3 );
+}
+
+
+BOOST_AUTO_TEST_CASE( test_Less_Than ) {
+   Weight w1(1.0, Weight::KILO);
+   Weight w2(1.0, Weight::SLUG);
+   Weight w3( Weight::SLUG );
+   //cout << w1.getWeight(Weight::POUND) << endl;
+   //cout << w2.getWeight(Weight::POUND) << endl;
+   BOOST_CHECK( w1 < w2 );
+   BOOST_CHECK( !(w1 < w1) );
+   BOOST_CHECK( !(w2 < w2) );
+   BOOST_CHECK( !(w3 < w3) );
+   BOOST_CHECK_EQUAL( w3 < w2, true );
+   BOOST_CHECK_EQUAL( w1 < w3, false );
+}
+
+
+BOOST_AUTO_TEST_CASE( test_Add_To ) {
+   Weight w1(1.0, Weight::KILO);
+   Weight w2;
+   Weight w3(1.0, 2.0);
+   w1 += 1;
+   BOOST_CHECK_EQUAL( w1.getWeight(), 2 );
+   BOOST_CHECK_THROW( w1 += -2, out_of_range );
+   BOOST_CHECK_THROW( w2 += 2, out_of_range );
+   w3 += 1;
+   BOOST_CHECK_EQUAL( w3.getWeight(), 2 );
+   BOOST_CHECK_THROW( w3 += 1, out_of_range );
 }

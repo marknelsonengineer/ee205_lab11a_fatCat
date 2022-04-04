@@ -366,3 +366,36 @@ std::ostream& operator<<( ostream& lhs_stream, const Weight::UnitOfWeight rhs_Un
       default: throw out_of_range( "The unit can not be converted to a string" );
    }
 }
+
+
+bool Weight::operator==( const Weight& rhs_Weight ) const {
+   /// Remember to convert the two weight's units into a common unit!
+   /// Treat unknown weights as 0 (so we can sort them without dealing with exceptions)
+   float lhs_weight = (bIsKnown) ? getWeight(Weight::POUND) : 0;
+   float rhs_weight = (rhs_Weight.bIsKnown) ? rhs_Weight.getWeight(Weight::POUND) : 0;
+
+   return lhs_weight == rhs_weight;
+}
+
+
+bool Weight::operator<( const Weight& rhs_Weight ) const {
+   /// Remember to convert the two weight's units into a common unit!
+   /// Treat unknown weights as 0 (so we can sort them without dealing with exceptions)
+   float lhs_weight = (bIsKnown) ? getWeight(Weight::POUND) : 0;
+   float rhs_weight = (rhs_Weight.bIsKnown) ? rhs_Weight.getWeight(Weight::POUND) : 0;
+
+   return lhs_weight < rhs_weight;
+}
+
+
+/// It's assumed that rhs_addToWeight is in the same units as Weight
+Weight& Weight::operator+=( const float rhs_addToWeight ) {
+   if( !bIsKnown ) {
+      /// @throws out_of_range When a mathematical operation is attempted when the weight is unknown
+      throw out_of_range( "Weight is unknown" ) ;
+   }
+
+   setWeight( weight + rhs_addToWeight );
+
+   return *this;
+}

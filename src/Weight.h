@@ -32,6 +32,10 @@
 /// unit of measure can be set in the constructor and can not be changed.  It
 /// defaults to the POUND.
 ///
+/// We are not fully implemented a good numeric class.  A full/complete
+/// implementation would have overrides for the following operators:
+/// `=  -=  *=  /=  %=  ++  --  +  -  *  /  >=  >  <=  !=` and `<=>`
+///
 /// @see https://en.wikipedia.org/wiki/Pound_(mass)
 /// @see https://en.wikipedia.org/wiki/Kilogram
 /// @see https://en.wikipedia.org/wiki/Slug_(unit)
@@ -97,6 +101,11 @@ public:   /////////////////////// Public Methods ///////////////////////////////
    bool isWeightValid( float checkWeight ) const noexcept;  ///< Check the weight
    bool validate() const noexcept;   ///< Check Weight to ensure it's healthy
    void dump() const noexcept;   ///< Print the weight class
+
+public:   ////////////////////// Public Overrides //////////////////////////////
+   bool operator==( const Weight& rhs_Weight ) const;  ///< Weights are equal when their `weight`s are equal
+   bool operator<( const Weight& rhs_Weight ) const;   ///< Compare two Weights
+   Weight& operator+=( float rhs_addToWeight );    ///< Add to an existing weight
 };
 
 
