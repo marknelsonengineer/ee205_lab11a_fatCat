@@ -97,23 +97,20 @@ public:   /////////////////////// Public Methods ///////////////////////////////
    bool isWeightValid( float checkWeight ) const noexcept;  ///< Check the weight
    bool validate() const noexcept;   ///< Check Weight to ensure it's healthy
    void dump() const noexcept;   ///< Print the weight class
-
-public:   ///////////////////////// Overloads //////////////////////////////////
-   // friend std::ostream& operator<<( std::ostream& lhs_stream, const Weight& weightToOutput );
 };
 
 
 /// Output Weight as a formatted string
 ///
-/// @param lhs_stream     The output stream to write to (usually `cout`)
-/// @param weightToOutput The Weight to output
-/// @return `Unknown Pounds` or `3.14 of 20 Kilos`
-std::ostream& operator<<( std::ostream& lhs_stream, const Weight& weightToOutput ) ;
+/// @param lhs_stream     The output stream to write to (usually `cout`).  `lhs` stands for Left Hand Side and means the left side of the `<<` operator.
+/// @param rhs_Weight The Weight to output.  `rhs` stands for Right Hand Side and means the right side of the `<<` operator.
+/// @return `Unknown Pounds` or `3.14 out of 20 Kilos`
+std::ostream& operator<<( std::ostream& lhs_stream, const Weight& rhs_Weight ) ;
 
 
 /// Output the UnitOfMeasure as a formatted string
 ///
-/// @param lhs_stream     The output stream to write to (usually `cout`)
-/// @param unitOfWeight The weight-unit to output
+/// @param lhs_stream     The output stream to write to (usually `cout`).  `lhs` stands for Left Hand Side and means the left side of the `<<` operator.
+/// @param rhs_UnitOfWeight The weight-unit to output.  `rhs` stands for Right Hand Side and means the right side of the `<<` operator.
 /// @return Pound`, `Kilo` or `Slug` as defined by LABEL_POUND, LABEL_KILO or LABEL_SLUG
-std::ostream& operator<<( std::ostream& lhs_stream, Weight::UnitOfWeight unitOfWeight);
+std::ostream& operator<<( std::ostream& lhs_stream, Weight::UnitOfWeight rhs_UnitOfWeight );

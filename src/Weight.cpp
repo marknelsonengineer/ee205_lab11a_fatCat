@@ -310,32 +310,56 @@ void Weight::dump() const noexcept {
 }
 
 
-std::ostream& operator<<( std::ostream& lhs_stream, const Weight& weightToOutput ) {
-   if( weightToOutput.isWeightKnown() ) {
-      lhs_stream << weightToOutput.getWeight();
+/// #### Output rules
+///
+///   - If the weight is unknown, print `Unknown`
+///   - If the weight has a maximum weight, print the weight followed by ` out of ` and the maximum weight
+///   - Print the unit.  If the last number that's printed is > 1, then make the unit plural by adding an `s`
+///
+/// #### Sample Output
+///
+/// Test vectors for Weight << override:
+///     | Usage                                   | The Output              |
+///     |-----------------------------------------|-------------------------|
+///     | `Weight weight`                         | `Unknown`               |
+///     | `Weight weight( 0.5 )`                  | `0.5 Pound`             |
+///     | `Weight weight( 1 )`                    | `1 Pound`               |
+///     | `Weight weight( 1.5 )`                  | `1.5 Pounds`            |
+///     | `Weight weight( 1.5, Weight::KILO )`    | `1.5 Kilos`             |
+///     | `Weight weight( 0.5, Weight::KILO, 1 )` | `0.5 out of 1 Kilo`     |
+///     | `Weight weight( 0.5, Weight::KILO, 2 )` | `0.5 out of 2 Kilos`    |
+///     | `Weight weight( Weight::KILO, 1 )`      | `Unknown out of 1 Kilo` |
+///
+std::ostream& operator<<( std::ostream& lhs_stream, const Weight& rhs_Weight ) {
+   if( !rhs_Weight.isWeightKnown() && !rhs_Weight.hasMaxWeight() ) {
+      lhs_stream << "Unknown" ;
+      return lhs_stream;
+   }
+   else if( rhs_Weight.isWeightKnown() ) {
+      lhs_stream << rhs_Weight.getWeight();
    } else {
       lhs_stream << "Unknown";
    }
 
-   if( weightToOutput.hasMaxWeight() ) {
-      lhs_stream << " of " << weightToOutput.getMaxWeight();
+   if( rhs_Weight.hasMaxWeight() ) {
+      lhs_stream << " out of " << rhs_Weight.getMaxWeight();
    }
 
-   lhs_stream << " " << weightToOutput.getWeightUnit() ;
+   lhs_stream << " " << rhs_Weight.getWeightUnit() ;
 
    /// If the numeric weight is 1, use the singular form of the unit.
    /// If the numeric weight is not 1, use the plural form of the unit.
-   if(    ( !weightToOutput.hasMaxWeight() && weightToOutput.getWeight() != 1 )
-       || (weightToOutput.hasMaxWeight() && weightToOutput.getMaxWeight() != 1 ) ) {
-      cout << "s";
+   if(    ( !rhs_Weight.hasMaxWeight() && rhs_Weight.getWeight() > 1 )
+       || ( rhs_Weight.hasMaxWeight() && rhs_Weight.getMaxWeight() > 1 ) ) {
+      lhs_stream << "s";
    }
 
    return lhs_stream;
 }
 
 
-std::ostream& operator<<( ostream& lhs_stream, const Weight::UnitOfWeight unitOfWeight ) {
-   switch( unitOfWeight ) {
+std::ostream& operator<<( ostream& lhs_stream, const Weight::UnitOfWeight rhs_UnitOfWeight ) {
+   switch( rhs_UnitOfWeight ) {
       case Weight::POUND: return lhs_stream << Weight::POUND_LABEL ;
       case Weight::KILO:  return lhs_stream << Weight::KILO_LABEL ;
       case Weight::SLUG:  return lhs_stream << Weight::SLUG_LABEL ;

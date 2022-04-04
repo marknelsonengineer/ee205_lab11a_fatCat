@@ -13,6 +13,7 @@
 #define BOOST_TEST_MAIN  // in only one cpp file
 #include <boost/test/unit_test.hpp>
 #include <stdexcept>
+#include <sstream>  // For stringstream
 
 #include "../src/Weight.h"
 
@@ -169,8 +170,7 @@ BOOST_AUTO_TEST_CASE( test_Weight_Set_Weight_With_Units ) {
 }
 
 
-BOOST_AUTO_TEST_CASE( test_Weight_Conversions )
-{
+BOOST_AUTO_TEST_CASE( test_Weight_Conversions ) {
    BOOST_CHECK_EQUAL( Weight::convertWeight(1, Weight::POUND, Weight::POUND), 1 );
    BOOST_CHECK_EQUAL( Weight::convertWeight(1, Weight::KILO, Weight::KILO), 1 );
    BOOST_CHECK_EQUAL( Weight::convertWeight(1, Weight::SLUG, Weight::SLUG), 1 );
@@ -183,4 +183,57 @@ BOOST_AUTO_TEST_CASE( test_Weight_Conversions )
 
    BOOST_CHECK_EQUAL( Weight::convertWeight(3.14, Weight::SLUG, Weight::POUND), (float) 3.14 / Weight::SLUGS_IN_A_POUND );
    BOOST_CHECK_EQUAL( Weight::convertWeight(3.14, Weight::SLUG, Weight::KILO), (float) 3.14 / Weight::SLUGS_IN_A_POUND * Weight::KILOS_IN_A_POUND  );
+}
+
+
+BOOST_AUTO_TEST_CASE( test_Stream_Output ) {
+   {
+      Weight weight;
+      stringstream ss;
+      ss << weight;
+      BOOST_CHECK_EQUAL( ss.str(), "Unknown" );
+   }
+   {
+      Weight weight (0.5);
+      stringstream ss;
+      ss << weight;
+      BOOST_CHECK_EQUAL( ss.str(), "0.5 Pound" );
+   }
+   {
+      Weight weight (1);
+      stringstream ss;
+      ss << weight;
+      BOOST_CHECK_EQUAL( ss.str(), "1 Pound" );
+   }
+   {
+      Weight weight (1.5);
+      stringstream ss;
+      ss << weight;
+      BOOST_CHECK_EQUAL( ss.str(), "1.5 Pounds" );
+   }
+   {
+      Weight weight (1.5, Weight::KILO);
+      stringstream ss;
+      ss << weight;
+      BOOST_CHECK_EQUAL( ss.str(), "1.5 Kilos" );
+   }
+   {
+      Weight weight (0.5, Weight::KILO, 1);
+      stringstream ss;
+      ss << weight;
+      BOOST_CHECK_EQUAL( ss.str(), "0.5 out of 1 Kilo" );
+   }
+   {
+      Weight weight (0.5, Weight::KILO, 2);
+      stringstream ss;
+      ss << weight;
+      BOOST_CHECK_EQUAL( ss.str(), "0.5 out of 2 Kilos" );
+   }
+   {
+      Weight weight (Weight::KILO, 1);
+      stringstream ss;
+      ss << weight;
+      BOOST_CHECK_EQUAL( ss.str(), "Unknown out of 1 Kilo" );
+   }
+
 }
