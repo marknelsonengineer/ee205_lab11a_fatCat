@@ -26,6 +26,7 @@ if (DOXYGEN_FOUND)
    set(DOXYGEN_PROJECT_LOGO "images/catLogo.jpeg")
    set(DOXYGEN_GENERATE_TREEVIEW YES)
    set(DOXYGEN_DISABLE_INDEX NO)
+   set(DOXYGEN_USE_MDFILE_AS_MAINPAGE README.md)
    set(DOXYGEN_MULTILINE_CPP_IS_BRIEF YES)
    set(DOXYGEN_TAB_SIZE 3)
    set(DOXYGEN_JAVADOC_AUTOBRIEF YES)
@@ -66,8 +67,7 @@ if (DOXYGEN_FOUND)
 
    doxygen_add_docs(doc
            ${CMAKE_SOURCE_DIR}/src
-   #       ${CMAKE_SOURCE_DIR}/README.md
-   #       ${CMAKE_SOURCE_DIR}/CONTRIBUTE.md
+           ${CMAKE_SOURCE_DIR}/README.md
            ALL
            COMMENT "Generating doxygen documentation for ${PROJECT_NAME} to ${DOXYGEN_OUTPUT_DIRECTORY}"
            )

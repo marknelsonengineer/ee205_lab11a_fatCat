@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="462" height="430" viewBox="0, 0, 462, 430">
+  <g id="graph0">
+    <g>
+      <path d="M4,428.5 L4,8.5 L458,8.5 L458,428.5 L4,428.5 z" fill="#BFBFBF"/>
+      <path d="M4,428.5 L4,8.5 L458,8.5 L458,428.5 L4,428.5 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+    </g>
+    <text transform="matrix(1, 0, 0, 1, 231.5, 17.5)">
+      <tspan x="-15.974" y="3" font-family="Helvetica" font-size="10" fill="#000000">Weight</tspan>
+    </text>
+    <path d="M4,27.5 L458,27.5" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+    <text transform="matrix(1, 0, 0, 1, 103.213, 36.5)">
+      <tspan x="-91.213" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ static const float UNKNOWN_WEIGHT</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 103.511, 47.5)">
+      <tspan x="-91.511" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ static const float KILOS_IN_A_POUND</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 105.732, 58.5)">
+      <tspan x="-93.732" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ static const float SLUGS_IN_A_POUND</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 48.354, 69.5)">
+      <tspan x="-36.354" y="3" font-family="Helvetica" font-size="10" fill="#000000">- bool bIsKnown</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 47.515, 80.5)">
+      <tspan x="-35.515" y="3" font-family="Helvetica" font-size="10" fill="#000000">- bool bHasMax</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 89.297, 91.5)">
+      <tspan x="-77.297" y="3" font-family="Helvetica" font-size="10" fill="#000000">- enum UnitOfWeight unitOfWeight</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 40.847, 102.5)">
+      <tspan x="-28.847" y="3" font-family="Helvetica" font-size="10" fill="#000000">- float weight</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 51.313, 113.5)">
+      <tspan x="-39.313" y="3" font-family="Helvetica" font-size="10" fill="#000000">- float maxWeight</tspan>
+    </text>
+    <path d="M4,123.5 L458,123.5" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+    <text transform="matrix(1, 0, 0, 1, 57.295, 132.5)">
+      <tspan x="-45.295" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ Weight() noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 71.099, 143.5)">
+      <tspan x="-59.099" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ Weight(float newWeight)</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 127.144, 154.5)">
+      <tspan x="-115.144" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ Weight(UnitOfWeight newUnitOfWeight) noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 143.726, 165.5)">
+      <tspan x="-131.726" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ Weight(float newWeight, UnitOfWeight newUnitOfWeight)</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 118.809, 176.5)">
+      <tspan x="-106.809" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ Weight(float newWeight, float newMaxWeight)</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 153.171, 187.5)">
+      <tspan x="-141.171" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ Weight(UnitOfWeight newUnitOfWeight, float newMaxWeight)</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 191.436, 198.5)">
+      <tspan x="-179.436" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ Weight(float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight)</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 100.376, 209.5)">
+      <tspan x="-88.376" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ bool isWeightKnown() const noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 98.984, 220.5)">
+      <tspan x="-86.984" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ bool hasMaxWeight() const noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 88.425, 231.5)">
+      <tspan x="-76.425" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ float getWeight() const noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 145.303, 242.5)">
+      <tspan x="-133.303" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ float getWeight(UnitOfWeight weightUnits) const noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 97.871, 253.5)">
+      <tspan x="-85.871" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ float getMaxWeight() const noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 117.51, 264.5)">
+      <tspan x="-105.51" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ UnitOfWeight getWeightUnit() const noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 88.33, 275.5)">
+      <tspan x="-76.33" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ void setWeight(float newWeight)</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 147.986, 286.5)">
+      <tspan x="-135.986" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ void setWeight(float newWeight, UnitOfWeight weightUnits)</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 135.212, 297.5)">
+      <tspan x="-123.212" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ bool isWeightValid(float checkWeight) const noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 83.237, 308.5)">
+      <tspan x="-71.237" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ bool validate() const noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 78.23, 319.5)">
+      <tspan x="-66.23" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ void dump() const noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 127.522, 330.5)">
+      <tspan x="-115.522" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ bool operator==(const Weight &amp;rhs_Weight) const</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 124.602, 341.5)">
+      <tspan x="-112.602" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ bool operator&lt;(const Weight &amp;rhs_Weight) const</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 115.852, 352.5)">
+      <tspan x="-103.852" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ Weight &amp; operator+=(float rhs_addToWeight)</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 144.922, 363.5)">
+      <tspan x="-132.922" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ static float fromKilogramToPound(float kilogram) noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 139.932, 374.5)">
+      <tspan x="-127.932" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ static float fromPoundToKilogram(float pound) noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 125.479, 385.5)">
+      <tspan x="-113.479" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ static float fromSlugToPound(float slug) noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 130.21, 396.5)">
+      <tspan x="-118.21" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ static float fromPoundToSlug(float pound) noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 233.479, 407.5)">
+      <tspan x="-221.479" y="3" font-family="Helvetica" font-size="10" fill="#000000">+ static float convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 105.967, 418.5)">
+      <tspan x="-93.967" y="3" font-family="Helvetica" font-size="10" fill="#000000">- void setMaxWeight(float newMaxWeight)</tspan>
+    </text>
+  </g>
+</svg>
