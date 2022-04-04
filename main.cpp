@@ -9,9 +9,11 @@ int main() {
 
    Weight noWeight;
    noWeight.dump();
+   cout << "noWeight = " << noWeight << endl;
 
    Weight myWeight( 3.14, Weight::KILO, 20 );
    myWeight.dump();
+   cout << "myWeight = " << myWeight << endl ;
 
    cout << "Done with fatCat" << endl;
    return 0;

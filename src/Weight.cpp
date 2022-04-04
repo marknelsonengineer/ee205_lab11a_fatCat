@@ -306,14 +306,39 @@ void Weight::dump() const noexcept {
    FORMAT_LINE( "Weight", "unitOfWeight" ) << unitOfWeight << endl ;
    FORMAT_LINE( "Weight", "hasMax" )       << bHasMax      << endl ;
    FORMAT_LINE( "Weight", "maxWeight" )    << maxWeight    << endl ;
+   // FORMAT_LINE( "Weight", "<<" ) << this << endl ;
 }
 
 
-std::ostream& operator<<( ostream& out, const Weight::UnitOfWeight inUnitOfWeight ) {
-   switch( inUnitOfWeight ) {
-      case Weight::POUND: return out << Weight::POUND_LABEL ;
-      case Weight::KILO:  return out << Weight::KILO_LABEL ;
-      case Weight::SLUG:  return out << Weight::SLUG_LABEL ;
+std::ostream& operator<<( std::ostream& lhs_stream, const Weight& weightToOutput ) {
+   if( weightToOutput.isWeightKnown() ) {
+      lhs_stream << weightToOutput.getWeight();
+   } else {
+      lhs_stream << "Unknown";
+   }
+
+   if( weightToOutput.hasMaxWeight() ) {
+      lhs_stream << " of " << weightToOutput.getMaxWeight();
+   }
+
+   lhs_stream << " " << weightToOutput.getWeightUnit() ;
+
+   /// If the numeric weight is 1, use the singular form of the unit.
+   /// If the numeric weight is not 1, use the plural form of the unit.
+   if(    ( !weightToOutput.hasMaxWeight() && weightToOutput.getWeight() != 1 )
+       || (weightToOutput.hasMaxWeight() && weightToOutput.getMaxWeight() != 1 ) ) {
+      cout << "s";
+   }
+
+   return lhs_stream;
+}
+
+
+std::ostream& operator<<( ostream& lhs_stream, const Weight::UnitOfWeight unitOfWeight ) {
+   switch( unitOfWeight ) {
+      case Weight::POUND: return lhs_stream << Weight::POUND_LABEL ;
+      case Weight::KILO:  return lhs_stream << Weight::KILO_LABEL ;
+      case Weight::SLUG:  return lhs_stream << Weight::SLUG_LABEL ;
       default: throw out_of_range( "The unit can not be converted to a string" );
    }
 }

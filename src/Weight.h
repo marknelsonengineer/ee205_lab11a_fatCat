@@ -13,6 +13,7 @@
 #pragma once
 
 #include <string>
+#include <ostream>
 
 /// Every Animal has a Weight.
 ///
@@ -96,8 +97,23 @@ public:   /////////////////////// Public Methods ///////////////////////////////
    bool isWeightValid( float checkWeight ) const noexcept;  ///< Check the weight
    bool validate() const noexcept;   ///< Check Weight to ensure it's healthy
    void dump() const noexcept;   ///< Print the weight class
+
+public:   ///////////////////////// Overloads //////////////////////////////////
+   // friend std::ostream& operator<<( std::ostream& lhs_stream, const Weight& weightToOutput );
 };
 
 
-/// Output the UnitOfMeasure as a string
-std::ostream& operator<<(std::ostream& out, Weight::UnitOfWeight value);
+/// Output Weight as a formatted string
+///
+/// @param lhs_stream     The output stream to write to (usually `cout`)
+/// @param weightToOutput The Weight to output
+/// @return `Unknown Pounds` or `3.14 of 20 Kilos`
+std::ostream& operator<<( std::ostream& lhs_stream, const Weight& weightToOutput ) ;
+
+
+/// Output the UnitOfMeasure as a formatted string
+///
+/// @param lhs_stream     The output stream to write to (usually `cout`)
+/// @param unitOfWeight The weight-unit to output
+/// @return Pound`, `Kilo` or `Slug` as defined by LABEL_POUND, LABEL_KILO or LABEL_SLUG
+std::ostream& operator<<( std::ostream& lhs_stream, Weight::UnitOfWeight unitOfWeight);
